@@ -1,0 +1,108 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+void distance()
+{
+    int FirstPointX, FirstPointY, SecondPointX, SecondPointY;
+    cout << "Введите координаты первой точки (сначала по оси х, затем по оси у): \n";
+    cin >> FirstPointX >> FirstPointY;
+    cout << "Введите координаты второй точки (сначала по оси х, затем по оси у): \n";
+    cin >> SecondPointX >> SecondPointY;
+    if (FirstPointX == SecondPointX) // случай, если обе точки стоят на оси Х
+        cout << "Расстояние между точками равно: " << abs(FirstPointY - SecondPointY);
+    else if (FirstPointY == SecondPointY) // случай, если обе точки стоят на оси У
+        cout << "\nРасстояние между точками равно: " << abs(FirstPointX - SecondPointX);
+    else // нахождение гипотенузы треугольника, который образован данными точками
+        cout << sqrt(pow(abs(FirstPointX - SecondPointX), 2) + pow(abs(FirstPointY - SecondPointY), 2)); // вывод результата
+}
+
+
+void section()
+{
+    int PointA, PointB, PointC, sectionAC, sectionBC;
+    cout << "Введите координаты точек А, В и С\n";
+    cin >> PointA >> PointB >> PointC;
+    sectionAC = abs(PointA - PointC); // вычисление длин отрезков
+    sectionBC = abs(PointA - PointC);
+    cout << "Отрезок АС равен: " << sectionAC << endl << "Отрезок BC равен: " << sectionBC << endl << "Сумма отрезков навна: " << sectionAC + sectionBC; // вывод результата
+}
+
+void middleC()
+{
+    int PointA, PointB, PointC;
+    cout << "Введите координаты точек А, В и С (точка С должна распологаться между точками А и В)\n";
+    cin >> PointA >> PointB >> PointC;
+    cout << "Произведение отрезков равно: " <<(PointC - PointA) * (PointB - PointC); // вычисление расстояния и произведения
+}
+
+void rectangle()
+{
+    int PointAX, PointAY, PointBX, PointBY, SideX, SideY;
+    cout << "Введите координаты первой вершины\n";
+    cin >> PointAX >> PointAY;
+    cout << "Введите координаты второй вершины\n";
+    cin >> PointBX >> PointBY;
+    SideX = abs(PointAX - PointBX); // вычисление сторон прямоугольнка
+    SideY = abs(PointAY - PointBY);
+    cout << "Периметр равен: " << (SideX + SideY) * 2 << "\n Площадь равна:" << SideX * SideY; // вывод результата
+}
+
+int triangleSideFinder(int num1X, int num1Y, int num2X, int num2Y) // функция для вычисления сторон треугольника
+{
+    double x, y;
+    x = abs(num1X - num1Y);
+    y = abs(num2X - num2Y);
+    return sqrt(x * x + y * y);
+}
+
+void triangle()
+{
+    double PointAX, PointAY, PointBX, PointBY, PointCX, PointCY, sideAB, sideBC, sideAC;
+    cout << "Введите координаты первой точки\n";
+    cin >> PointAX >> PointAY;
+    cout << "Введите координаты второй точки\n";
+    cin >> PointBX >> PointBY;
+    cout << "Введите координаты третьей точки\n";
+    cin >> PointCX >> PointCY;
+    sideAB = triangleSideFinder(PointAX, PointBX, PointAY, PointBY);
+    sideBC = triangleSideFinder(PointBX, PointCX, PointBY, PointCY);
+    sideAC = triangleSideFinder(PointAX, PointCX, PointAY, PointCY);
+    cout << "Периметр треугольника равен: " << sideAB + sideAC + sideBC << endl; // вычисление периметра и вывод результата
+    cout << "Площадь треугольнка равна:" << 0.5 * abs((PointBX - PointAX) * (PointCY - PointAY) - (PointCX - PointAX) * (PointBY - PointAY)) << endl; // вычисление площади и вывод результата
+}
+
+
+int main()
+{
+    int WorkNumber; // объявление переменной, отвечающей за номер операции, которую необходимо выполнить
+    setlocale(LC_ALL, "Russian"); // руссификация
+    cout << "\n 1. Найти расстояние между двумя точками с заданными координатами (x1, y1) и (x2, y2)\n 2. Еайим диаметр окружности\n 3.Найти среднее арифметическое\n 4.Найти сумму, разность, произведение и частное их квадратов\n 5. Найти сумму, разность, произведение и частное модулей двух чисел\n Введите номер желаймой операции:"; // вывод на консоль перечня возможных операций
+    cin >> WorkNumber; // ввод числа операции
+    if (WorkNumber == 1) // активация первой операции
+    {
+        distance();
+        return 0;
+    }
+    else if (WorkNumber == 2)// активация второй операции
+    {
+
+        section();
+        return 0;
+    }
+    else if (WorkNumber == 3)// активация третьей операции
+    {
+        middleC();
+        return 0;
+    }
+    else if (WorkNumber == 4)// активация четвёртой операции
+    {
+        rectangle();
+        return 0;
+    }
+    else // активация пятой операции
+    {
+        triangle();
+        return 0;
+    }
+}
