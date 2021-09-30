@@ -1,127 +1,110 @@
+#include"pch.h"
 #include <iostream>
 #include <cmath>
 using namespace std;
 
-void placeChanger2Numbers()
-{ 
-    int num1, num2;
-    cout << "Введите два числа: ";
-    cin >> num1 >> num2;
-    cout << "A = " << num1 << "\nB = " << num2;
-    int numbers[2] = { num1, num2 };
-    num1 = numbers[1];
-    num2 = numbers[0];
-    cout << "\nA = " << num1 << "\nB = " << num2;
+void distance()
+{
+	int FirstPointX, FirstPointY, SecondPointX, SecondPointY;
+	cout << "Введите координаты первой точки (сначала по оси х, затем по оси у): \n";
+	cin >> FirstPointX >> FirstPointY;
+	cout << "Введите координаты второй точки (сначала по оси х, затем по оси у): \n";
+	cin >> SecondPointX >> SecondPointY;
+	if (FirstPointX == SecondPointX) // случай, если обе точки стоят на оси Х
+		cout << "Расстояние между точками равно: " << abs(FirstPointY - SecondPointY);
+	else if (FirstPointY == SecondPointY) // случай, если обе точки стоят на оси У
+		cout << "\nРасстояние между точками равно: " << abs(FirstPointX - SecondPointX);
+	else // нахождение гипотенузы треугольника, который образован данными точками
+		cout << sqrt(pow(abs(FirstPointX - SecondPointX), 2) + pow(abs(FirstPointY - SecondPointY), 2)); // вывод результата
 }
 
-void placeChanger3Numbers1()
+
+void section()
 {
-    int num1, num2, num3;
-    cout << "Введите три числа: ";
-    cin >> num1 >> num2 >> num3;
-    cout << "Изначальная версия:\nA = " << num1 << "\nB = " << num2 << "\nC = " << num3;
-    int numbers[3] = { num1, num2, num3 };
-    num1 = numbers[1];
-    num2 = numbers[2];
-    num3 = numbers[0];
-    cout << "\nОбновлённая версия:\nA = " << num1 << "\nB = " << num2 << "\nC = " << num3;
+	int PointA, PointB, PointC, sectionAC, sectionBC;
+	cout << "Введите координаты точек А, В и С\n";
+	cin >> PointA >> PointB >> PointC;
+	sectionAC = abs(PointA - PointC); // вычисление длин отрезков
+	sectionBC = abs(PointB - PointC);
+	cout << "Отрезок АС равен: " << sectionAC << endl << "Отрезок BC равен: " << sectionBC << endl << "Сумма отрезков навна: " << sectionAC + sectionBC; // вывод результата
 }
 
-void placeChanger3Numbers2()
+void middleC()
 {
-    int num1, num2, num3;
-    cout << "Введите три числа: ";
-    cin >> num1 >> num2 >> num3;
-    cout << "Изначальная версия:\nA = " << num1 << "\nB = " << num2 << "\nC = " << num3;
-    int numbers[3] = { num1, num2, num3 };
-    num1 = numbers[2];
-    num2 = numbers[0];
-    num3 = numbers[1];
-    cout << "\nОбновлённая версия:\nA = " << num1 << "\nB = " << num2 << "\nC = " << num3;
+	int PointA, PointB, PointC;
+	cout << "Введите координаты точек А, В и С (точка С должна распологаться между точками А и В)\n";
+	cin >> PointA >> PointB >> PointC;
+	cout << "Произведение отрезков равно: " << (PointC - PointA) * (PointB - PointC); // вычисление расстояния и произведения
 }
 
-void equation1()
+void rectangle()
 {
-    int x;
-    cout << "y = 3x^6 - 6x^2 - 7\n Введите х: ";
-    cin >> x;
-    cout <<"Y = "<< 3 * pow(x, 6) - 6 * pow(x, 2) - 7;
+	int PointAX, PointAY, PointBX, PointBY, SideX, SideY;
+	cout << "Введите координаты первой вершины\n";
+	cin >> PointAX >> PointAY;
+	cout << "Введите координаты второй вершины\n";
+	cin >> PointBX >> PointBY;
+	SideX = abs(PointAX - PointBX); // вычисление сторон прямоугольнка
+	SideY = abs(PointAY - PointBY);
+	cout << "Периметр равен: " << (SideX + SideY) * 2 << "\n Площадь равна:" << SideX * SideY << endl; // вывод результата
 }
 
-void equation2()
+int triangleSideFinder(int num1X, int num1Y, int num2X, int num2Y) // функция для вычисления сторон треугольника
 {
-    int x;
-    cout << "y = 4(x-3)^6 - 7(x-3)^3 + 2 \n Введите х: ";
-    cin >> x;
-    cout << "Y = " << 4 * pow((x-3), 6) - 7 * pow((x-3), 3) + 2;
+	double x, y;
+	x = abs(num1X - num1Y);
+	y = abs(num2X - num2Y);
+	return sqrt(x * x + y * y);
 }
 
-void A8()
+void triangle()
 {
-    int A, B;
-    cout << "Введите А: ";
-    cin >> A;
-    A = A * A;
-    A = A * A;
-    A = A * A;
-    B = A;
-    cout << "A, возведенная в 8 степень с помощью гениальных вычислений = " << B;
+	double PointAX, PointAY, PointBX, PointBY, PointCX, PointCY, sideAB, sideBC, sideAC;
+	cout << "Введите координаты первой точки\n";
+	cin >> PointAX >> PointAY;
+	cout << "Введите координаты второй точки\n";
+	cin >> PointBX >> PointBY;
+	cout << "Введите координаты третьей точки\n";
+	cin >> PointCX >> PointCY;
+	sideAB = triangleSideFinder(PointAX, PointBX, PointAY, PointBY);
+	sideBC = triangleSideFinder(PointBX, PointCX, PointBY, PointCY);
+	sideAC = triangleSideFinder(PointAX, PointCX, PointAY, PointCY);
+	cout << "Периметр треугольника равен: " << sideAB + sideAC + sideBC << endl; // вычисление периметра и вывод результата
+	cout << "Площадь треугольнка равна:" << 0.5 * abs((PointBX - PointAX) * (PointCY - PointAY) - (PointCX - PointAX) * (PointBY - PointAY)) << endl; // вычисление площади и вывод результата
 }
 
-void A15()
-{
-    int A, B, C;
-    cout << "Введите А: ";
-    cin >> A;
-    B = A * A;
-    C = A * B;
-    B = B * C;
-    C = B * A;
-    B = B * C;
-    cout << "A, возведенная в 15 степень с помощью гениальных вычислений = " << B;
-    cout << "\nНифига это не равно А^15, на самом деле А^15 = " << pow(A, 15) ;
-}
 
 int main()
 {
-    while (true) 
-    {
-        int WorkNumber; // объявление переменной, отвечающей за номер операции, которую необходимо выполнить
-        setlocale(LC_ALL, "Russian"); // руссификация
-        cout << "\n1. Поменять местами содержимое переменных A и B и вывести новые значения A и B. \n2. Даны переменные A, B, C. Изменить их значения, переместив содержимое A в B, B — в C, C — в A, и вывести новые значения переменных A, B, C. \n3. Даны переменные A, B, C. Изменить их значения, переместив содержимое A в C, C — в B, B — в A, и вывести новые значения переменных A, B, C. 4. Найти значение функции y = 3x6 − 6x2 − 7 при данном значении x. \n5. Найти значение функции y = 4(x−3)6 − 7(x−3)3 + 2 при данном x. \n6. Дано число A. Вычислить A8 , используя вспомогательную переменную и три операции умножения. \n7. Дано число A. Вычислить A15, используя две вспомогательные переменные и пять операций умножения. \nВведите номер желаймой операции или любой иной символ для завершения работы:"; // вывод на консоль перечня возможных операций
-        cin >> WorkNumber; // ввод числа операции
-        if (WorkNumber == 1) // активация первой операции
-        {
-            placeChanger2Numbers();
-        }
-        else if (WorkNumber == 2)// активация второй операции
-        {
-            placeChanger3Numbers1();
-        }
-        else if (WorkNumber == 3)// активация третьей операции
-        {
-            placeChanger3Numbers2();
-        }
-        else if (WorkNumber == 4)// активация четвёртой операции
-        {
-            equation1();
-        }
-        else if (WorkNumber == 5)// активация пятой операции
-        {
-            equation2();
-        }
-        else if (WorkNumber == 6)// активация шестой операции
-        {
-            A8();
-        }
-        else if (WorkNumber == 7) // активация пятой операции
-        {
-            A15();
-        }
-        else
-        {
-            break;
-        }
-    } 
-    return 0;
+	while (true)
+	{
+		int WorkNumber; // объявление переменной, отвечающей за номер операции, которую необходимо выполнить
+		setlocale(LC_ALL, "Russian"); // руссификация
+		cout << "\n 1. Найти расстояние между двумя точками с заданными координатами (x1, y1) и (x2, y2)\n2. Даны три точки A, B, C на числовой оси. Найти длины отрезков AC и BC и их сумму.\n 3. Даны три точки A, B, C на числовой оси. Точка C расположена между точками A и B.Найти произведение длин отрезков AC и BC\n 4. Даны координаты двух противоположных вершин прямоугольника: (x1, y1), (x2, y2).Стороны прямоугольника параллельны осям координат. Найти периметр и площадь данного прямоугольника.\n 5. Даны координаты трех вершин треугольника: (x1, y1), (x2, y2), (x3, y3). Найти его периметр и площадь\n Введите номер желаемой операции:"; // вывод на консоль перечня возможных операций
+		cin >> WorkNumber; // ввод числа операции
+		if (WorkNumber == 1) // активация первой операции
+		{
+			distance();
+		}
+		else if (WorkNumber == 2)// активация второй операции
+		{
+			section();
+		}
+		else if (WorkNumber == 3)// активация третьей операции
+		{
+			middleC();
+		}
+		else if (WorkNumber == 4)// активация четвёртой операции
+		{
+			rectangle();
+		}
+		else if (WorkNumber == 5) // активация пятой операции
+		{
+			triangle();
+		}
+		else
+		{
+			return 0;
+		}
+	}
 }
