@@ -1,0 +1,100 @@
+//#include"pch.h"
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+void radian()
+{
+    float angle;
+    cout << "Введите значение угла в градусах: ";
+    cin >> angle;
+    cout << angle * 3.14159265358979323846 / 180.0 << endl << endl;
+}
+
+void radianReverse()
+{
+    float angle;
+    cout << "Введите значение угла в радианах: ";
+    cin >> angle;
+    cout << 180.0 / angle * 3.14159265358979323846 << endl << endl;
+}
+
+void sweets()
+{
+    float XKg, ACost, OneKgCost, YKg;
+    cout << "Введите количество кг Х, цену А и количество кг Y: \n";
+    cin >> XKg >> ACost >> YKg;
+    OneKgCost = ACost / XKg;
+    cout << "Цена за 1 кг: " << OneKgCost << "\nЦена за Y кг: " << OneKgCost * YKg << endl << endl;
+}
+
+void speed()
+{
+    float V1, V2, distace, time;
+    cout << "Введите скорость первого и второго автомобиля, растояние между ними и время (в часах) \n";
+    cin >> V1 >> V2 >> distace >> time;
+    cout << "Расстояние между автомобилями через " << time << " час(ов): " << (V1 + V2) * time + distace << endl << endl;
+}
+
+void equation()
+{
+    float A, B;
+    cout << "A·x + B = 0 \n Введите коэффициенты А (!= 0) и В\n";
+    cin >> A >> B;
+    cout << "x = " << -B / A;
+}
+
+void system()
+{
+    float A1, B1, C1, A2, B2, C2, x, y;
+    cout << "A1·x + B1·y = С1 \n A2·x + B2·y = С2 \n Введите коэффициенты А1, В1, C1, A2, B2, C2: \n";
+    cin >> A1 >> B1 >> C1 >> A2 >> B2 >> C2;
+    if (float isZero = (A1 * B2 - A2 * B1) == 0)
+        cout << "Деление на ноль";
+    else
+    {
+        y = (A1 * C2 - A2 * C1) / (A1 * B2 - A2 * B1);
+        x = (C2 - B2 * y) / A2;
+        cout << "x = " << x << "y = " << y;
+    }
+}
+
+int main()
+{
+    while (true)
+    {
+        int WorkNumber; // объявление переменной, отвечающей за номер операции, которую необходимо выполнить
+        setlocale(LC_ALL, "Russian"); // руссификация
+        cout << "1. Дано значение угла α в градусах (0 < alpha < 360). Определить значение этого же угла в радианах, учитывая, что 180 = pi радианов.\n"
+            << "2. Дано значение угла α в радианах (0 < alpha < 2·pi). Определить значение этого же угла в градусах, учитывая, что 180 = pi радианов.\n"
+            << "3. Известно, что X кг конфет стоит A рублей. Определить, сколько стоит 1 кг и Y кг этих же конфет.\n"
+            << "4. Скорость первого автомобиля V1 км/ч, второго — V2 км/ч, расстояние между ними S км. Определить расстояние между ними через T часов, если автомобили удаляются друг от друга."
+            << "5. Решить линейное уравнение A·x + B = 0, заданное своими коэффициентами A и B (коэффициент A не равен 0).\n"
+            << "6. Найти решение системы линейных уравнений вида A1·x + B1·y = C1, A2·x + B2·y = C2."
+            << "Выберете номер желаемой работы или любой иной символ для завершения работы: ";  // вывод на консоль перечня возможных операций
+        cin >> WorkNumber; // ввод числа операции
+        switch (WorkNumber)
+        {
+        case 1:
+            radian();
+            break;
+        case 2:
+            radianReverse();
+            break;
+        case 3:
+            sweets();
+            break;
+        case 4:
+            speed();
+            break;
+        case 5:
+            equation();
+            break;
+        case 6:
+            system();
+            break;
+        default:
+            return 0;
+        }
+    }
+}
