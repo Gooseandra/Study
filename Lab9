@@ -1,0 +1,148 @@
+#include"pch.h"
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+void pass()
+{
+	char empty;
+	cout << "\nВведите любой символ для продолжения работы: ";
+	cin >> empty;
+	system("cls");
+}
+
+void minutes()
+{
+	int secondsN;
+	cout << "Введите количество секунд: ";
+	cin >> secondsN;
+	cout << secondsN % 60;
+	pass();
+}
+
+void dayInWeek()
+{
+	int day;
+	cout << "Введите номер дня (от 1 до 365): ";
+	cin >> day;
+	day = day % 7;
+	switch (day)
+	{
+	case 0:
+		cout << "Воскресенье";
+		break;
+	case 1:
+		cout << "Понедельник";
+		break;
+	case 2:
+		cout << "Вторник";
+		break;
+	case 3:
+		cout << "Среда";
+		break;
+	case 4:
+		cout << "Четверг";
+		break;
+	case 5:
+		cout << "Пятница";
+		break;
+	case 6:
+		cout << "Суббота";
+		break;
+	}
+	pass();
+}
+
+void dayInWeekAgain()
+{
+	int day, FirstDay;
+	cout << "1.Понедельник 2.Вторник 3.Среда 4.Четверг 5.Пятница 6.Суббота 7.Воскресенье\nВведите номер деня недели первого янваня: ";
+	cin >> FirstDay;
+	cout << "Введите номер дня (от 1 до 365): ";
+	cin >> day;
+	day = day % 7 + FirstDay - 1;
+	switch (day)
+	{
+	case 0:
+		cout << "Понедельник";
+		break;
+	case 1:
+		cout << "Вторник";
+		break;
+	case 2:
+		cout << "Среда";
+		break;
+	case 3:
+		cout << "Четверг";
+		break;
+	case 4:
+		cout << "Пятница";
+		break;
+	case 5:
+		cout << "Суббота";
+		break;
+	case 6:
+		cout << "Воскресенье";
+		break;
+	}
+	pass();
+}
+
+void squears()
+{
+	int sideA, sideB, squarSideC, square, pryamougol;
+	cout << "Введите стороны прямоугольника А, В и сторону квадрата С: ";
+	cin >> sideA >> sideB >> squarSideC;
+	square = squarSideC * squarSideC;
+	pryamougol = sideA * sideB;
+	cout << "Количество квадратов в данном прямоугольнике равно: " << floor(pryamougol / square);
+	cout << "\nСвободное место: " << pryamougol % square;
+	pass();
+}
+
+void years()
+{
+	int year, plus = 1;
+	cout << "Введите год: ";
+	cin >> year;
+	if (year % 10 == 0)
+		plus = 0;
+	cout << year / 100 + plus;
+	pass();
+}
+
+int main()
+{
+	while (true)
+	{
+		int WorkNumber; 
+		setlocale(LC_ALL, "Russian"); 
+		cout << "1. С начала суток прошло N секунд (N — целое). Найти количество секунд, прошедших с начала последней минуты.\n"
+			<< "2. Дни недели пронумерованы следующим образом: 0 — воскресенье, 1 — понедельник, 2 — вторник, . . . , 6 — суббота. Дано целое число K, лежащее в диапазоне 1–365. Определить номер дня недели для K-го дня года, если известно, что в этом году 1 января было понедельником.\n"
+			<< "3. Дни недели пронумерованы следующим образом: 1 — понедельник, 2 — вторник, . . . , 6 — суббота, 7 — воскресенье. Дано целое число K, лежащее в диапазоне 1–365, и целое число N, лежащее в диапазоне 1–7. Определить номер дня недели для K-го дня года, если известно, что в этом году 1 января было днем недели с номером N\n"
+			<< "4. Даны целые положительные числа A, B, C. На прямоугольнике размера A × B размещено максимально возможное количество квадратов со стороной C (без наложений). Найти количество квадратов, размещенных на прямоугольнике, а также площадь незанятой части прямоугольника.\n"
+			<< "5. Дан номер некоторого года (целое положительное число). Определить соответствующий ему номер столетия, учитывая, что, к примеру, началом 20 столетия был 1901 год\n"
+			<< "Выберете номер желаемой работы или любой иной символ для завершения работы: ";  
+		cin >> WorkNumber; 
+		switch (WorkNumber)
+		{
+		case 1:
+			minutes();
+			break;
+		case 2:
+			dayInWeek();
+			break;
+		case 3:
+			dayInWeekAgain();
+			break;
+		case 4:
+			squears();
+			break;
+		case 5:
+			years();
+			break;
+		default:
+			return 0;
+		}
+	}
+}
