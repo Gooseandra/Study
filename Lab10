@@ -1,0 +1,175 @@
+#include"pch.h"
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+void pass()
+{
+	char empty;
+	cout << "\nВведите любой символ для продолжения работы: ";
+	cin >> empty;
+	system("cls");
+}
+
+void IsTrue() 
+{
+	int A, B;
+	cout << "Введите числа А и В: ";
+	cin >> A >> B;
+	if (A > 2 && B <= 3)
+		cout << "Да.";
+	else
+		cout << "Не";
+	pass();
+}
+
+void IsTrueThreeNum()
+{
+	int A, B, C;
+	cout << "Введите числа А, В и С: ";
+	cin >> A >> B >> C;
+	if (A < B && B < C)
+		cout << "Да.";
+	else
+		cout << "Не";
+	pass();
+}
+
+void ChetAndTwoNum()
+{
+	int num;
+	cout << "Введите числo: ";
+	cin >> num;
+	if (num % 2 == 0 && num < 100 and num > 9 or num % 2 == 0 && num < -9 && num > -100)
+		cout << "Да.";
+	else
+		cout << "Не";
+	pass();
+}
+
+void arifm()
+{
+	int num, numbers[3];
+	cout << "Введите числo: ";
+	cin >> num;
+	numbers[0] = num / 100;
+	numbers[1] = (num / 10) % 10;
+	numbers[2] = (num % 100) % 10;
+	if (numbers[0] < numbers[1] && numbers[1] < numbers[2] or numbers[2] < numbers[1] && numbers[1] < numbers[0])
+		cout << "Да.";
+	else
+		cout << "Не";
+	pass();
+}
+
+void mirror()
+{
+	int num, numbers[4];
+	cout << "Введите числo: ";
+	cin >> num;
+	numbers[0] = num / 1000;
+	numbers[1] = (num / 100) % 10;
+	numbers[2] = (num % 100) / 10;
+	numbers[3] = (num % 100) % 10;
+	if (numbers[0] == numbers[3] && numbers[1] == numbers[2])
+		cout << "Да.";
+	else
+		cout << "Не";
+	pass();
+}
+
+void threeangle()
+{
+	int a, b, c;
+	cout << "Введите числa A, B, C: ";
+	cin >> a >> b >> c;
+	if (a > b && a > c) {
+		if (pow(b, 2) + pow(c, 2) == pow(a, 2))
+			cout << "Да.";
+		else
+			cout << "Не";
+	}
+	else if (b > a && b > c) {
+		if (pow(a, 2) + pow(c, 2) == pow(b, 2))
+			cout << "Да.";
+		else
+			cout << "Не";
+	}
+	else if (c > a && c > b) {
+		if (pow(b, 2) + pow(a, 2) == pow(c, 2))
+			cout << "Да.";
+		else
+			cout << "Не";
+	}
+	pass();
+}
+
+void threeangle2()
+{
+	int a, b, c;
+	cout << "Введите числa A, B, C: ";
+	cin >> a >> b >> c;
+	if (a > b && a > c) {
+		if (b + c > a)
+			cout << "Да.";
+		else
+			cout << "Не";
+	}
+	else if (b > a && b > c) {
+		if (a + c > b)
+			cout << "Да.";
+		else
+			cout << "Не";
+	}
+	else if (c > a && c > b) {
+		if (a + b > c)
+			cout << "Да.";
+		else
+			cout << "Не";
+	}
+	pass();
+}
+
+int main()
+{
+	while (true)
+	{
+		int WorkNumber;
+		setlocale(LC_ALL, "Russian");
+		cout << "1. Даны два целых числа: A, B. Проверить истинность высказывания: «Справедливы неравенства A > 2 и B ≤ 3»\n"
+			<< "2. Даны три целых числа: A, B, C. Проверить истинность высказывания: «Справедливо двойное неравенство A < B < C».\n"
+			<< "3. Дано целое положительное число. Проверить истинность высказывания: «Данное число является четным двузначным».\n"
+			<< "4. Дано трехзначное число. Проверить истинность высказывания: «Цифры данного числа образуют возрастающую или убывающую последовательность»..\n"
+			<< "5. Дано четырехзначное число. Проверить истинность высказывания: «Данное число читается одинаково слева направо и справа налево».\n"
+			<< "6. Даны целые числа a, b, c, являющиеся сторонами некоторого треугольника. Проверить истинность высказывания: «Треугольник со сторонами a, b, c является прямоугольным».\n"
+			<< "7. Даны целые числа a, b, c. Проверить истинность высказывания: «Существует треугольник со сторонами a, b, c».\n"
+			<< "Выберете номер желаемой работы или любой иной символ для завершения работы: ";
+		cin >> WorkNumber;
+		switch (WorkNumber)
+		{
+		case 1:
+			IsTrue();
+			break;
+		case 2:
+			IsTrueThreeNum();
+			break;
+		case 3:
+			ChetAndTwoNum();
+			break;
+		case 4:
+			arifm();
+			break;
+		case 5:
+			mirror();
+			break;
+		case 6:
+			threeangle();
+			break;
+		case 7:
+			threeangle2();
+			break;
+		default:
+			return 0;
+		}
+	}
+}
