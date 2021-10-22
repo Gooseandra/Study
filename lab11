@@ -1,0 +1,169 @@
+//#include"pch.h"
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+void pass()
+{
+	char empty;
+	cout << "\nВведите любой символ для продолжения работы: ";
+	cin >> empty;
+	system("cls");
+}
+
+void maxSwitch()
+{
+	int num1, num2;
+	cout << "Введите два числа: ";
+	cin >> num1 >> num2;
+	if (num1 == num2)
+	{
+		num1 = 0;
+		num2 = 0;
+	}
+	else if (num1 > num2)
+		num2 = num1;
+	else
+		num1 = num2;
+	cout << num1 << num2;
+	pass();
+}
+
+void threeNumMax()
+{
+	int num1, num2, num3;
+	cout << "Введите три числа: ";
+	cin >> num1 >> num2 >> num3;
+	if (num1 <= num2 && num1 <= num3)
+		cout << num2 + num3;
+	else if (num2 <= num1 && num2 <= num3)
+		cout << num1 + num3;
+	else if (num3 <= num1 && num3 <= num2)
+		cout << num1 + num2;
+	pass();
+}
+
+void theClosestPoint()
+{
+	int A, B, C;
+	cout << "Введите координаты точек А, В, С: ";
+	cin >> A >> B >> C;
+	if (abs(A - B) < abs(A - C))
+		cout << "B";
+	else if (abs(A - B) > abs(A - C))
+		cout << "C";
+	else
+		cout << "Расстояния равны";
+	pass();
+}
+
+void cordPart()
+{
+	struct point { int  x, y; };
+	point myPoint;
+	cout << "Введите координаты точки";
+	cin >> myPoint.x >> myPoint.y;
+	if (myPoint.x > 0 && myPoint.y > 0)
+		cout << 1;
+	else if (myPoint.x < 0 && myPoint.y > 0)
+		cout << 2;
+	else if (myPoint.x < 0 && myPoint.y < 0)
+		cout << 3;
+	else if (myPoint.x > 0 && myPoint.y < 0)
+		cout << 4;
+	pass();
+}
+
+void numDiscritpion()
+{
+	int num;
+	cout << "Введите числo: ";
+	cin >> num;
+	if (num == 0)
+		cout << "Нулевое число";
+	else if (num > 0) {
+		if (num % 2 == 0)
+			cout << "Чётное положительное число";
+		else
+			cout << "Нечётное положительное число";
+	}
+	else {
+		if (num % 2 == 0)
+			cout << "Чётное отрицательное число";
+		else
+			cout << "Нечётное отрицательное число";
+	}
+	pass();
+}
+
+void numDiscription2()
+{
+	int num;
+	cout << "Введите числo: ";
+	cin >> num;
+	if (num > 0 && num < 1000) {
+		if (num < 10 && num > 0) {
+			if (num % 2 == 0)
+				cout << "Чётная цифра";
+			else
+				cout << "Нечётная цифра";
+		}
+		else if (num > 9 && num < 100) {
+			if (num % 2 == 0)
+				cout << "Чётное двузначное число";
+			else
+				cout << "Нечётное двузначное число";
+		}
+		else {
+			if (num % 2 == 0)
+				cout << "Чётное трехзначное число";
+			else
+				cout << "Нечётное трехзначное число";
+		}
+	}
+	else
+		cout << "Число вне диапозона";
+	pass();
+}
+
+int main()
+{
+	while (true)
+	{
+		int WorkNumber;
+		setlocale(LC_ALL, "Russian");
+		cout << "1. Даны две переменные целого типа: A и B. Если их значения не равны, то присвоить каждой переменной большее из этих значений, а если равны, то присвоить переменным нулевые значения. Вывести новые значения переменных A и B.\n"
+			<< "2. Даны три числа. Найти сумму двух наибольших из них\n"
+			<< "3. На плоскости расположены три точки: A, B, C. Определить, какая из двух последних точек (B или C) расположена ближе к A, и вывести эту точку и ее расстояние от точки A.\n"
+			<< "4. Даны координаты точки, не лежащей на координатных осях OX и OY. Определить номер координатной четверти, в которой находится данная точка\n"
+			<< "5. Дано целое число. Вывести его строку-описание вида «отрицательное четное число», «нулевое число», «положительное нечетное число» и т. д.\n"
+			<< "6. Дано целое число, лежащее в диапазоне 1–999. Вывести его строкуописание вида «четное двузначное число», «нечетное трехзначное число» и т. д.\n"
+			<< "Выберете номер желаемой работы или любой иной символ для завершения работы: ";
+		cin >> WorkNumber;
+		switch (WorkNumber)
+		{
+		case 1:
+			maxSwitch();
+			break;
+		case 2:
+			threeNumMax();
+			break;
+		case 3:
+			theClosestPoint();
+			break;
+		case 4:
+			cordPart();
+			break;
+		case 5:
+			numDiscritpion();
+			break;
+		case 6:
+			numDiscription2();
+			break;
+		case 7:
+			break;
+		default:
+			return 0;
+		}
+	}
+}
