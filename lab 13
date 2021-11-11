@@ -1,0 +1,114 @@
+//#include"pch.h"
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+void clean()
+{
+	char empty;
+	cout << "\nВведите любой символ для продолжения работы: ";
+	cin >> empty;
+	system("cls");
+}
+
+void sweets()
+{
+	float price, temp = 0.1;
+	cout << "Введите цену: ";
+	cin >> price;
+	for (int i = 0; i < 10; i++)
+	{
+		cout << "\nЦена за " << temp << "кг: " << price * temp;
+		temp = temp + 0.1;
+	}
+	clean();
+}
+
+void arofmFloatNumbers()
+{
+	int num; float supp = 1.0;
+	cout << "Введите число: \n";
+	cin >> num;
+	for (int i = 0; i < num; i++)
+	{
+		supp = supp * (supp + 0.1);
+	}
+	cout << supp << endl;
+	clean();
+}
+
+void oddSqrt()
+{
+	int num, supp = 0;
+	cout << "Введите число: \n";
+	cin >> num;
+	for (int i = 1; i <= (2 * num - 1); i += 2)
+	{
+		supp += i;
+		cout << supp << endl;
+	}
+	clean();
+}
+
+void degrees()
+{
+	float num, answer = 0; int degree;
+	cout << "Введите число А и N: \n";
+	cin >> num >> degree;
+	for (int i = 0; i <= degree; i++)
+	{
+		answer += pow(num, i);
+	}
+	cout << answer << endl;
+	clean();
+}
+
+void plusAndMinuse()
+{
+	float num, answer = 0; int degree;
+	cout << "Введите число А и N: \n";
+	cin >> num >> degree;
+	num = -num;
+	for (int i = 0; i <= degree; i++)
+	{
+		answer += pow(num, i);
+	}
+	cout << answer << endl;
+	clean();
+}
+
+int main()
+{
+	while (true)
+	{
+		int WorkNumber;
+		setlocale(LC_ALL, "Russian");
+		cout << "1. Дано вещественное число — цена 1 кг конфет. Вывести стоимость 0.1, 0.2, . . . , 1 кг конфет.\n"
+			<< "2. Дано целое число N (> 0). Найти произведение 1.1 · 1.2 · 1.3 · . . . (N сомножителей).\n"
+			<< "3. Дано целое число N (> 0). Найти квадрат данного числа, используя для его вычисления следующую формулу: N2 = 1 + 3 + 5 + . . . + (2·N − 1). После добавления к сумме каждого слагаемого выводить текущее значение суммы\n"
+			<< "4. Дано вещественное число A и целое число N (> 0). Используя один цикл, найти сумму 1 + A + A2 + A3 + . . . + AN\n"
+			<< "5. Дано вещественное число A и целое число N (> 0). Используя один цикл, найти значение выражения 1 − A + A2 − A3 + . . . ± AN . Условный оператор не использовать.\n"
+			<< "Выберете номер желаемой работы или любой иной символ для завершения работы: ";
+		cin >> WorkNumber;
+		switch (WorkNumber)
+		{
+		case 1:
+			sweets();
+			break;
+		case 2:
+			arofmFloatNumbers();
+			break;
+		case 3:
+			oddSqrt();
+			break;
+		case 4:
+			degrees();
+			break;
+		case 5:
+			plusAndMinuse();
+			break;
+		default:
+			return 0;
+		}
+	}
+}
