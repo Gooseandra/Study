@@ -1,0 +1,475 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+void clean()
+{
+	char empty;
+	cout << "\nВведите любой символ для продолжения работы: ";
+	cin >> empty;
+	system("cls");
+}
+
+void switchDay(int dayNumber) {
+	switch (dayNumber) {
+	case 1:
+		cout << "Первое ";
+		break;
+	case 2:
+		cout << "Второе ";
+		break;
+	case 3:
+		cout << "Третье ";
+		break;
+	case 4:
+		cout << "Четвёртое ";
+		break;
+	case 5:
+		cout << "Пятое ";
+		break;
+	case 6:
+		cout << "Шестое ";
+		break;
+	case 7:
+		cout << "Седьмое ";
+		break;
+	case 8:
+		cout << "Восьмое ";
+		break;
+	default:
+		cout << "Девятое ";
+		break;
+	}
+}
+
+void days()
+{
+	system("cls");
+	int dayNumber, monthNumber;
+	cout << "Введите номер дня и месяца: ";
+	cin >> dayNumber >> monthNumber;
+	if (dayNumber / 10 == 0) {
+		switchDay(dayNumber);
+	}
+	else if (dayNumber / 10 == 1) {
+		switch (dayNumber) {
+		case 10:
+			cout << "Десятое ";
+			break;
+		case 11:
+			cout << "Одиннадцатое ";
+			break;
+		case 12:
+			cout << "Двенадцатое ";
+			break;
+		case 13:
+			cout << "Тринадцатое ";
+			break;
+		case 14:
+			cout << "Четырнадцатое ";
+			break;
+		case 15:
+			cout << "Пятнадцатое ";
+			break;
+		case 16:
+			cout << "Шестнадцатое ";
+			break;
+		case 17:
+			cout << "Семнадцатое ";
+			break;
+		case 18:
+			cout << "Восемнадцатое ";
+			break;
+		default:
+			cout << "Девятнадцатое ";
+			break;
+		}
+	}
+	else if (dayNumber / 10 == 2) {
+		if (dayNumber == 20)
+			cout << "Двадцатое ";
+		else {
+			cout << "Двадцать ";
+			switchDay(dayNumber % 10);
+		}
+	}
+	else if (dayNumber / 10 == 3) {
+		if (dayNumber == 30)
+			cout << "Тридцацатое ";
+		else {
+			cout << "Тридцать ";
+			switchDay(dayNumber % 10);
+		}
+	}
+	switch (monthNumber) {
+	case 1:
+		cout << "января\n";
+		break;
+	case 2:
+		cout << "февраля\n";
+		break;
+	case 3:
+		cout << "марта\n";
+		break;
+	case 4:
+		cout << "апреля\n";
+		break;
+	case 5:
+		cout << "мая\n";
+		break;
+	case 6:
+		cout << "июня\n";
+		break;
+	case 7:
+		cout << "июля\n";
+		break;
+	case 8:
+		cout << "августа\n";
+		break;
+	case 9:
+		cout << "сентября\n";
+		break;
+	case 10:
+		cout << "октября\n";
+		break;
+	case 11:
+		cout << "ноября\n";
+		break;
+	default:
+		cout << "декабря\n";
+		break;
+	}
+	clean();
+}
+
+void robot()
+{
+	system("cls");
+	int direction, command, answerDirection;
+	int probablyDirection[6] = { 4, 1, 2, 3, 4, 1 };
+	cout << "Введите направление робота и команду \n1.C\n2.3\n3.Ю\n4.B\n";
+	cin >> direction >> command;
+	answerDirection = probablyDirection[direction + command];
+	switch (answerDirection) {
+	case 1:
+		cout << "C";
+		break;
+	case 2:
+		cout << "3";
+		break;
+	case 3:
+		cout << "Ю";
+		break;
+	default:
+		cout << "B";
+		break;
+	}
+	clean();
+}
+
+void switchValue(int value)
+{
+	switch (value) {
+	case 1:
+		cout << "одно ";
+		break;
+	case 2:
+		cout << "два ";
+		break;
+	case 3:
+		cout << "три ";
+		break;
+	case 4:
+		cout << "четыре ";
+		break;
+	case 5:
+		cout << "пять ";
+		break;
+	case 6:
+		cout << "шесть ";
+		break;
+	case 7:
+		cout << "семь ";
+		break;
+	case 8:
+		cout << "восемь ";
+		break;
+	default:
+		cout << "девять ";
+		break;
+	}
+}
+
+void TenAndNineteen(int num)
+{
+	switch (num) {
+	case 10:
+		cout << "Десять ";
+		break;
+	case 11:
+		cout << "Одиннадцать ";
+		break;
+	case 12:
+		cout << "Двенадцать ";
+		break;
+	case 13:
+		cout << "Тринадцать ";
+		break;
+	case 14:
+		cout << "Четырнадцать ";
+		break;
+	case 15:
+		cout << "Пятнадцать ";
+		break;
+	case 16:
+		cout << "Шестнадцать ";
+		break;
+	case 17:
+		cout << "Семнадцать ";
+		break;
+	case 18:
+		cout << "Восемнадцать ";
+		break;
+	default:
+		cout << "Девятнадцать ";
+		break;
+	}
+}
+
+void studyBildings()
+{
+		system("cls");
+		int num;
+		cout << "Введите число: ";
+		cin >> num;
+		if (num / 10 == 0)
+			switchValue(num);
+		else if (num / 10 == 1)
+			TenAndNineteen(num);
+		else if (num / 10 == 2) {
+			if (num == 20)
+				cout << "Двадцать ";
+			else {
+				cout << "Двадцать ";
+				switchValue(num % 10);
+			}
+		}
+		else if (num / 10 == 3) {
+			if (num == 20)
+				cout << "Тридцать ";
+			else {
+				cout << "Тридцать ";
+				switchValue(num % 10);
+			}
+		}
+		else
+			cout << "Сорок ";
+		if (num % 10 < 5)
+			cout << "учебных здания";
+		else
+			cout << "учебных зданий";
+		clean();
+}
+
+void numbers()
+{
+		system("cls");
+		int num;
+		cout << "Введите число: ";
+		cin >> num;
+		switch (num / 100) {
+		case 1:
+			cout << "Сто ";
+			break;
+		case 2:
+			cout << "Двести ";
+			break;
+		case 3:
+			cout << "Триста ";
+			break;
+		case 4:
+			cout << "Четыреста ";
+			break;
+		case 5:
+			cout << "Пятьсот ";
+			break;
+		case 6:
+			cout << "Шестьсот ";
+			break;
+		case 7:
+			cout << "Семьсот ";
+			break;
+		case 8:
+			cout << "Восемьсот ";
+			break;
+		default:
+			cout << "Девятьсот ";
+			break;
+		}
+		if (num % 100 > 9 && num % 100 < 20)
+			TenAndNineteen(num);
+		else {
+			switch (num % 100 / 10) {
+			case 0:
+				break;
+			case 2:
+				cout << "двадцать ";
+				break;
+			case 3:
+				cout << "тридцать ";
+				break;
+			case 4:
+				cout << "сорок ";
+				break;
+			case 5:
+				cout << "пятьдесят ";
+				break;
+			case 6:
+				cout << "шестьдесят ";
+				break;
+			case 7:
+				cout << "семьдесят ";
+				break;
+			case 8:
+				cout << "восемьдемят ";
+				break;
+			case 9:
+				cout << "девяносто ";
+				break;
+			}
+			if (num % 100 % 10 == 1)
+				cout << "один";
+			else
+				switchValue(num % 100 % 10);
+		}	
+		clean();
+}
+
+void years()
+{
+	system("cls");
+	int year;
+	cout << "Год:";
+	cin >> year;
+
+	cout << "год ";
+
+	switch ((year) % 10) {
+	case 0:
+	case 1:
+		cout << "бел";
+		break;
+	case 2:
+	case 3:
+		cout << "черн";
+		break;
+	case 4:
+	case 5:
+		cout << "зелён";
+		break;
+	case 6:
+	case 7:
+		cout << "красн";
+		break;
+	case 8:
+	case 9:
+		cout << "жёлт";
+		break;
+	}
+
+	switch ((year + 1) % 5) {
+	case 0:
+	case 1:
+	case 2:
+	case 3:
+	case 4:
+	case 5:
+	case 9:
+	case 10:
+	case 11:
+		cout << "ой ";
+		break;
+	case 6:
+	case 7:
+	case 8:
+		cout << "ого ";
+		break;
+	}
+
+	switch ((year + 8) % 12) {
+	case 0:
+		cout << "крысы";
+		break;
+	case 1:
+		cout << "коровы";
+		break;
+	case 2:
+		cout << "тигра";
+		break;
+	case 3:
+		cout << "зайца";
+		break;
+	case 4:
+		cout << "дракона";
+		break;
+	case 5:
+		cout << "змеи";
+		break;
+	case 6:
+		cout << "лошади";
+		break;
+	case 7:
+		cout << "овцы";
+		break;
+	case 8:
+		cout << "обезьяны";
+		break;
+	case 9:
+		cout << "курицы";
+		break;
+	case 10:
+		cout << "собаки";
+		break;
+	case 11:
+		cout << "свиньи";
+		break;
+	}
+	clean();
+}
+
+
+int main()
+{
+		while (true)
+		{
+			int WorkNumber;
+			setlocale(LC_ALL, "Russian");
+			cout << "1. Дан номер дня – целое число от 1 до 31 и месяца — целое число в диапазоне 1–12(1 — январь, 2 — февраль и т.д.).Вывести дату в виде текста(например, «пятое января»).\n"
+				<< "2. 2. Робот может перемещаться в четырех направлениях («С» — север, «З» — запад, «Ю» — юг, «В» — восток) и принимать три цифровые команды: 0 — продолжать движение, 1 — поворот налево, −1 — поворот направо. Дан символ C — исходное направление робота и целое число N — посланная ему команда. Вывести направление робота после выполнения полученной команды\n"
+				<< "3. Дано целое число в диапазоне 10–40, определяющее количество учебных заданий по некоторой теме. Вывести строку-описание указанного количества заданий, обеспечив правильное согласование числа со словами «учебное задание», например: 18 — «восемнадцать учебных заданий».\n"
+				<< "4. Дано целое число в диапазоне 100–999. Вывести строку-описание данного числа, например: 256 — «двести пятьдесят шесть», 814 — «восемьсот четырнадцать».\n"
+				<< "5. В восточном календаре принят 60-летний цикл, состоящий из 12- летних подциклов, обозначаемых названиями цвета: зеленый, красный, желтый, белый и черный. В каждом подцикле годы носят названия животных: крысы, коровы, тигра, зайца, дракона, змеи, лошади, овцы, обезьяны, курицы, собаки и свиньи. По номеру года определить его название, если 1984 год — начало цикла: «год зеленой крысы».\n"
+				<< "Выберете номер желаемой работы или любой иной символ для завершения работы: ";
+			cin >> WorkNumber;
+			switch (WorkNumber)
+			{
+			case 1:
+				days();
+				break;
+			case 2:
+				robot();
+				break;
+			case 3:
+				studyBildings();
+				break;
+			case 4:
+				numbers();
+				break;
+			case 5:
+				years();
+				break;
+			default:
+				return 0;
+			}
+		}
+}
