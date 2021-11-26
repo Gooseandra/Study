@@ -1,0 +1,132 @@
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+void clean()
+{
+	char empty;
+	cout << "\nВведите любой символ для продолжения работы: ";
+	cin >> empty;
+	system("cls");
+}
+
+void repeatNumbers() 
+{
+	system("cls");
+	int numA, numB;
+	cout << "Введите числа А и В: ";
+	cin >> numA >> numB;
+	for (int i = numA; i <= numB; i++) {
+		for (int u = 1; u <= i; u++) {
+			cout << i;
+		}
+	}
+	clean();
+}
+
+void sections() 
+{
+	system("cls");
+	int numA, numB;
+	cout << "Введите числа А и В: ";
+	cin >> numA >> numB;
+	while (numA > numB) 
+		numA = numA - numB;
+	cout << numA;
+	clean();
+}
+
+void minimalK()
+{
+	system("cls");
+	int numN, supp = 0, answer = 0;
+	cout << "Введите число N: ";
+	cin >> numN;
+	while (supp < numN) {
+		answer += 1;
+		supp = supp + answer;
+	}
+	cout << answer;
+	clean();
+}
+
+void bank()
+{
+	system("cls");
+	float numP, money = 1000; int month = 0;
+	cout << "Введите число P: ";
+	cin >> numP;
+	numP = numP / 100;
+	while (money < 1100) {
+		money = money * (numP + 1);
+		month += 1;
+	}
+	cout << "Количество месяцев: " << month << "\nРазмер вклада: " << money;
+	clean();
+}
+
+void evklid()
+{
+	int numA, numB;
+	cout << "Введите числа A и В:";
+	cin >> numA >> numB;
+	while ((numA != 0) & (numB != 0)) {
+		if (numA > numB) numA = numA % numB;
+		else numB = numB % numA;
+	}
+	cout << numA + numB;
+}
+
+void fibonachi() 
+{
+	int numN;
+	cout << "Введите число N:";
+	cin >> numN;
+	int f1 = 1, f2 = 1, f = 0, k = 2;
+	while (f < numN) {
+		++k;
+		f = f2 + f1;
+		f2 = f1;
+		f1 = f;
+	}
+	cout << k;
+}
+
+int main()
+{
+	while (true)
+	{
+		int WorkNumber;
+		setlocale(LC_ALL, "Russian");
+		cout << "1. Дан номер дня – целое число от 1 до 31 и месяца — целое число в диапазоне 1–12(1 — январь, 2 — февраль и т.д.).Вывести дату в виде текста(например, «пятое января»).\n"
+			<< "2. 2. Робот может перемещаться в четырех направлениях («С» — север, «З» — запад, «Ю» — юг, «В» — восток) и принимать три цифровые команды: 0 — продолжать движение, 1 — поворот налево, −1 — поворот направо. Дан символ C — исходное направление робота и целое число N — посланная ему команда. Вывести направление робота после выполнения полученной команды\n"
+			<< "3. Дано целое число в диапазоне 10–40, определяющее количество учебных заданий по некоторой теме. Вывести строку-описание указанного количества заданий, обеспечив правильное согласование числа со словами «учебное задание», например: 18 — «восемнадцать учебных заданий».\n"
+			<< "4. Дано целое число в диапазоне 100–999. Вывести строку-описание данного числа, например: 256 — «двести пятьдесят шесть», 814 — «восемьсот четырнадцать».\n"
+			<< "5. В восточном календаре принят 60-летний цикл, состоящий из 12- летних подциклов, обозначаемых названиями цвета: зеленый, красный, желтый, белый и черный. В каждом подцикле годы носят названия животных: крысы, коровы, тигра, зайца, дракона, змеи, лошади, овцы, обезьяны, курицы, собаки и свиньи. По номеру года определить его название, если 1984 год — начало цикла: «год зеленой крысы».\n"
+			<< "Выберете номер желаемой работы или любой иной символ для завершения работы: ";
+		cin >> WorkNumber;
+		switch (WorkNumber)
+		{
+		case 1:
+			repeatNumbers();
+			break;
+		case 2:
+			sections();
+			break;
+		case 3:
+			minimalK();
+			break;
+		case 4:
+			bank();
+			break;
+		case 5:
+			evklid();
+			break;
+		case 6:
+			fibonachi(); 
+			break;
+		default:
+			return 0;
+		}
+	}
+}
