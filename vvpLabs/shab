@@ -1,0 +1,49 @@
+//#include"pch.h"
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+void pass()
+{
+	char empty;
+	cout << "\nВведите любой символ для продолжения работы: ";
+	cin >> empty;
+	system("cls");
+}
+
+int main()
+{
+	while (true)
+	{
+		int WorkNumber;
+		setlocale(LC_ALL, "Russian");
+		cout << "1. \n"
+			<< "2. \n"
+			<< "3. \n"
+			<< "4. \n"
+			<< "5. \n"
+			<< "6. \n"
+			<< "7. \n"
+			<< "Выберете номер желаемой работы или любой иной символ для завершения работы: ";
+		cin >> WorkNumber;
+		switch (WorkNumber)
+		{
+		case 1:
+			break;
+		case 2:
+			break;
+		case 3:
+			break;
+		case 4:
+			break;
+		case 5:
+			break;
+		case 6:
+			break;
+		case 7:
+			break;
+		default:
+			return 0;
+		}
+	}
+}
