@@ -1,0 +1,145 @@
+//#include"pch.h"
+#include <iostream>
+#include <math.h>
+using namespace std;
+
+void clean()
+{
+	char empty;
+	cout << "\nВведите любой символ для продолжения работы: ";
+	cin >> empty;
+	system("cls");
+}
+
+void PrintArray(int* arr,int size) {
+	int u = 0;
+	for (u; u < size; u++)
+		cout << arr[u] << " ";
+}
+
+void avgArr() {
+	srand(NULL);
+	int size, minIndex, maxIndex, answer = 0;
+	cout << "Введите N K и L: ";
+	cin >> size >> minIndex >> maxIndex;
+	int* arr = new int[size];
+	for (int i = 0; i < size; i++) 
+		arr[i] = rand() % 70;
+	cout << "Массив: \n";
+	PrintArray(arr, size);
+	for (int k = minIndex; k < maxIndex; k++) {
+		answer += arr[k];
+	}
+	answer = answer / (maxIndex - minIndex);
+	cout << endl << "Cреднее арифметическое: " << answer;
+	clean();
+}
+
+void mathProgress() {
+	int size;
+	bool progress = true;
+	cout << "Введите размер массива: ";
+	cin >> size;
+	int* arr = new int[size];
+	cout << "Введите элемента массива: ";
+	for (int i = 0; i < size; i++)
+		cin >> arr[i];
+	for (int u = 1; u < size - 1; u++) {
+		if (arr[u] - arr[u - 1] == arr[u + 1] - arr[u])
+			continue;
+		else
+			progress = false;
+			printf("0");
+			break;
+	}
+	if (progress == true)
+		cout << arr[1] - arr[0];
+	clean();
+}
+
+void minChet() {
+	int size, minNum;
+	cout << "Введите размер массива: ";
+	cin >> size;
+	int* arr = new int[size];
+	for (int i = 0; i < size; i++)
+		arr[i] = rand() % 70;
+	PrintArray(arr, size);
+	minNum = arr[0];
+	for (int u = 0; u < size; u += 2) {
+		if (arr[u] < minNum)
+			minNum = arr[u];
+	}
+	cout << minNum;
+	clean();
+}
+
+void LocalMin() {
+	int size;
+	cout << "Введите размер массива: ";
+	cin >> size;
+	int* arr = new int[size];
+	for (int i = 0; i < size; i++)
+		arr[i] = rand() % 70;
+	PrintArray(arr, size);
+	for (int u = size-1; u > 1; u--) {
+		if (arr[u] > arr[u + 1] && arr[u] > arr[u - 1]) {
+			cout << arr[u];
+			break;
+		}
+	}
+	clean();
+}
+
+void equalsElements() {
+	int size;
+	cout << "Введите размер массива: ";
+	cin >> size;
+	int* arr = new int[size];
+	cout << "Введите элементы массива: ";
+	for (int i = 0; i < size; i++)
+		cin >> arr[i];
+	for (int CheckerIndex = 0; CheckerIndex < size; CheckerIndex++) {
+		for (int checkingIndex = CheckerIndex + 1; checkingIndex < size; checkingIndex++) {
+			if (arr[CheckerIndex] == arr[checkingIndex])
+				cout << CheckerIndex <<", "<< checkingIndex;
+		}
+	}
+	clean();
+}
+
+int main()
+{
+	while (true)
+	{
+		int WorkNumber;
+		setlocale(LC_ALL, "Russian");
+		cout << "1. Дан массив размера N и целые числа K и L (1 ≤ K ≤ L ≤ N). Найти среднее арифметическое элементов массива с номерами от K до L включительно.\n"
+			<< "2. Дан целочисленный массив размера N, не содержащий одинаковых чисел. Проверить, образуют ли его элементы арифметическую прогрессию. Если образуют, то вывести разность прогрессии, если нет — вывести 0.\n"
+			<< "3. Дан массив A размера N. Найти минимальный элемент из его элементов с четными номерами: A2, A4, A6,\n"
+			<< "4. Дан массив размера N. Найти номер его последнего локального максимума (локальный максимум — это элемент, который больше любого из своих соседей).\n"
+			<< "5. Дан целочисленный массив размера N, содержащий ровно два одинаковых элемента. Найти номера одинаковых элементов и вывести эти номера в порядке возрастания\n"
+			<< "Выберете номер желаемой работы или любой иной символ для завершения работы: ";
+		cin >> WorkNumber;
+		switch (WorkNumber)
+		{
+		case 1:
+			avgArr();
+			break;
+		case 2:
+			mathProgress();
+			break;
+		case 3:
+			minChet();
+			break;
+		case 4:
+			LocalMin();
+			break;
+		case 5:
+			equalsElements();
+			break;
+		default:
+			return 0;
+		}
+	}
+}
