@@ -1,15 +1,47 @@
-//#include"pch.h"
 #include <iostream>
 #include <math.h>
 using namespace std;
 
-void pass()
+void output(string myOutput) {
+	cout << myOutput << endl;
+}
+void output(int myOutput) {
+	cout << myOutput << endl;
+}
+void output(double myOutput) {
+	cout << myOutput << endl;
+}
+void output(float myOutput) {
+	cout << myOutput << endl;
+}
+int input(int myInput, string description) {
+	output(description);
+	cin >> myInput;
+	return myInput;
+}
+float input(float myInput, string description) {
+	output(description);
+	cin >> myInput;
+	return myInput;
+}
+char input(char myInput, string description) {
+	output(description);
+	cin >> myInput;
+	return myInput;
+}
+string input(string myInput, string description) {
+	output(description);
+	cin >> myInput;
+	return myInput;
+}
+
+
+void clean()
 {
-	char empty;
-	cout << "\nВведите любой символ для продолжения работы: ";
-	cin >> empty;
+	system("pause");
 	system("cls");
 }
+
 
 int main()
 {
